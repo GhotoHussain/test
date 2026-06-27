@@ -3,18 +3,18 @@
 xmlns="http://purl.org/net/xbiblio/csl">
 
   <info>
-    <title>Yangzhou University PhD Hybrid IEEE + GB/T 7714 (Final Mendeley)</title>
-    <id>http://www.zotero.org/styles/yangzhou-phd-ieee-gbt-final</id>
+    <title>Yangzhou University PhD Hybrid IEEE + GB/T (Mendeley Safe Final)</title>
+    <id>http://www.zotero.org/styles/yangzhou-phd-ieee-gbt-final-safe</id>
     <category citation-format="numeric"/>
-    <summary>Final PhD thesis style: IEEE superscript + GB/T 7714 bibliography with DOI support</summary>
+    <summary>Final Mendeley-safe PhD style: IEEE superscript + GB/T 7714 bibliography</summary>
     <updated>2026-06-27T00:00:00+00:00</updated>
   </info>
 
-  <!-- ================= AUTHORS ================= -->
+  <!-- ================= AUTHORS (Mendeley SAFE) ================= -->
   <macro name="author">
-    <names variable="author" et-al-min="4" et-al-use-first="3">
+    <names variable="author">
       <name initialize-with="." delimiter=", "/>
-      <et-al term="et-al"/>
+      <et-al/>
     </names>
   </macro>
 
@@ -55,7 +55,7 @@ xmlns="http://purl.org/net/xbiblio/csl">
     </choose>
   </macro>
 
-  <!-- ================= SOURCE (GB/T STRUCTURE FIXED) ================= -->
+  <!-- ================= SOURCE (GB/T FORMAT) ================= -->
   <macro name="source">
     <group delimiter=", ">
       <text variable="container-title"/>
@@ -68,7 +68,7 @@ xmlns="http://purl.org/net/xbiblio/csl">
     </group>
   </macro>
 
-  <!-- ================= DOI + URL (FIXED) ================= -->
+  <!-- ================= DOI / URL ================= -->
   <macro name="access">
     <choose>
       <if variable="DOI">
