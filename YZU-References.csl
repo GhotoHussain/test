@@ -3,14 +3,13 @@
 xmlns="http://purl.org/net/xbiblio/csl">
 
   <info>
-    <title>Yangzhou University PhD Hybrid IEEE + GB/T (Mendeley Safe Final)</title>
-    <id>http://www.zotero.org/styles/yangzhou-phd-ieee-gbt-final-safe</id>
+    <title>Yangzhou University PhD Thesis (IEEE Superscript + GB/T Hybrid)</title>
+    <id>http://www.zotero.org/styles/yangzhou-phd-final</id>
     <category citation-format="numeric"/>
-    <summary>Final Mendeley-safe PhD style: IEEE superscript + GB/T 7714 bibliography</summary>
     <updated>2026-06-27T00:00:00+00:00</updated>
   </info>
 
-  <!-- ================= AUTHORS (Mendeley SAFE) ================= -->
+  <!-- ================= AUTHORS ================= -->
   <macro name="author">
     <names variable="author">
       <name initialize-with="." delimiter=", "/>
@@ -18,44 +17,37 @@ xmlns="http://purl.org/net/xbiblio/csl">
     </names>
   </macro>
 
-  <!-- ================= TITLE + TYPE ================= -->
+  <!-- ================= TITLE ================= -->
   <macro name="titleField">
     <choose>
       <if type="article-journal">
         <text variable="title" suffix="[J]. "/>
       </if>
-
       <else-if type="paper-conference">
         <text variable="title" suffix="[C]. "/>
       </else-if>
-
       <else-if type="thesis">
         <text variable="title" suffix="[D]. "/>
       </else-if>
-
       <else-if type="book">
         <text variable="title" suffix="[M]. "/>
       </else-if>
-
       <else-if type="report">
         <text variable="title" suffix="[R]. "/>
       </else-if>
-
       <else-if type="webpage">
         <text variable="title" suffix="[EB/OL]. "/>
       </else-if>
-
       <else-if type="patent">
         <text variable="title" suffix="[P]. "/>
       </else-if>
-
       <else>
         <text variable="title" suffix=". "/>
       </else>
     </choose>
   </macro>
 
-  <!-- ================= SOURCE (GB/T FORMAT) ================= -->
+  <!-- ================= SOURCE (GB/T STYLE) ================= -->
   <macro name="source">
     <group delimiter=", ">
       <text variable="container-title"/>
@@ -80,9 +72,9 @@ xmlns="http://purl.org/net/xbiblio/csl">
     </choose>
   </macro>
 
-  <!-- ================= IEEE SUPERSCRIPT CITATION ================= -->
+  <!-- ================= CITATION (SUPERSCRIPT FIXED) ================= -->
   <citation collapse="citation-number">
-    <layout vertical-align="sup" delimiter=", ">
+    <layout vertical-align="sup">
       <text variable="citation-number"/>
     </layout>
   </citation>
