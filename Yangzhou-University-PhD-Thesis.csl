@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style class="in-text" version="1.0" demote-non-dropping-particle="sort-only" default-locale="en-US" xmlns="http://purl.org/net/xbiblio/csl">
+  <info>
+    <title>Yangzhou University PhD Thesis (IEEE Superscript + GB/T 7714-2015 Strict)</title>
+    <id>http://www.zotero.org/styles/yangzhou-phd-final</id>
+    <link href="http://www.zotero.org/styles/yangzhou-phd-final" rel="self"/>
+    <author>
+      <name>Muhammad Hussain</name>
+      <email>muhammad.hussain@example.edu</email>
+    </author>
+    <category citation-format="numeric"/>
+    <category field="engineering"/>
+    <summary>IEEE superscript in-text citations + GB/T 7714-2015 bibliography. 1-3 authors shown; 4+ first 3 + et al. No publisher/journal mixing. Journal abbreviation via short-title. DOI support.</summary>
+    <updated>2026-06-27T00:00:00+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+
+  <!-- ================= AUTHORS ================= -->
+  <macro name="author">
+    <names variable="author">
+      <name initialize-with="." name-as-sort-order="all" sort-separator=", " delimiter=", " delimiter-precedes-last="always"/>
+    </names>
+  </macro>
+
+  <!-- ================= EDITOR ================= -->
+  <macro name="editor">
+    <names variable="editor">
+      <name initialize-with="." delimiter=", "/>
+      <label form="short" prefix=", " text-case="lowercase"/>
+    </names>
+  </macro>
+
+  <!-- ================= TITLE + TYPE MARKER ================= -->
+  <macro name="titleField">
+    <choose>
+      <if type="article">
+        <text variable="title" suffix="[J]. "/>
+      </if>
+      <else-if type="paper-conference">
+        <text variable="title" suffix="[C]. "/>
+      </else-if>
+      <else-if type="chapter">
+        <text variable="title" suffix="[A]. "/>
+      </else-if>
+      <else-if type="thesis">
+        <text variable="title" suffix="[D]. "/>
+      </else-if>
+      <else-if type="book graphic legal_case motion_picture song" match="any">
+        <text variable="title" suffix="[M]. "/>
+      </else-if>
+      <else-if type="report">
+        <text variable="title" suffix="[R]. "/>
+      </else-if>
+      <else-if type="webpage">
+        <text variable="title" suffix="[EB/OL]. "/>
+      </else-if>
+      <else-if type="patent">
+        <text variable="title" suffix="[P]. "/>
+      </else-if>
+      <else-if type="software" match="any">
+        <text variable="title" suffix="[CP/CD]. "/>
+      </else-if>
+      <else>
+        <text variable="title" suffix="[J]. "/>
+      </else>
+    </choose>
+  </macro>
+
+  <!-- ================= SOURCE (GB/T 7714-2015 STRICT) ================= -->
+  <macro name="source">
+    <choose>
+      <!-- [J] Journal: Journal, Year, Vol(Issue): Pages. DOI. -->
+      <if type="article">
+        <choose>
+          <if variable="container-title-short">
+            <text variable="container-title-short" suffix=", "/>
+          </if>
+          <else>
+            <text variable="container-title" suffix=", "/>
+          </else>
+        </choose>
+        <date variable="issued">
+          <date-part name="year"/>
+        </date>
+        <text variable="volume" prefix=", "/>
+        <text variable="issue" prefix="(" suffix=")"/>
+        <text variable="page" prefix=": "/>
+        <text variable="DOI" prefix=". doi:"/>
+      </if>
+
+      <!-- [C] Conference: // Editor. Proceedings. Place: Publisher, Year: Pages. DOI. -->
+      <else-if type="paper-conference">
+        <text value="//" suffix=" "/>
+        <text macro="editor" suffix=". "/>
+        <text variable="container-title" suffix=". "/>
+        <group delimiter=": ">
+          <text variable="publisher-place"/>
+          <group delimiter=", ">
+            <text variable="publisher"/>
+            <date variable="issued">
+              <date-part name="year"/>
+            </date>
+          </group>
+        </group>
+        <text variable="page" prefix=": "/>
+        <text variable="DOI" prefix=". doi:"/>
+      </else-if>
+
+      <!-- [A] Chapter: // Editor. Book Title. Place: Publisher, Year: Pages. DOI. -->
+      <else-if type="chapter">
+        <text value="//" suffix=" "/>
+        <text macro="editor" suffix=". "/>
+        <text variable="container-title" suffix=". "/>
+        <group delimiter=": ">
+          <text variable="publisher-place"/>
+          <group delimiter=", ">
+            <text variable="publisher"/>
+            <date variable="issued">
+              <date-part name="year"/>
+            </date>
+          </group>
+        </group>
+        <text variable="page" prefix=": "/>
+        <text variable="DOI" prefix=". doi:"/>
+      </else-if>
+
+      <!-- [M] Book: Place: Publisher, Year. DOI. -->
+      <else-if type="book graphic legal_case motion_picture song" match="any">
+        <group delimiter=": ">
+          <text variable="publisher-place"/>
+          <group delimiter=", ">
+            <text variable="publisher"/>
+            <date variable="issued">
+              <date-part name="year"/>
+            </date>
+          </group>
+        </group>
+        <text variable="DOI" prefix=". doi:"/>
+      </else-if>
+
+      <!-- [D] Thesis: Place: Institution, Year. DOI. -->
+      <else-if type="thesis">
+        <group delimiter=": ">
+          <text variable="publisher-place"/>
+          <group delimiter=", ">
+            <text variable="publisher"/>
+            <date variable="issued">
+              <date-part name="year"/>
+            </date>
+          </group>
+        </group>
+        <text variable="DOI" prefix=". doi:"/>
+      </else-if>
+
+      <!-- [R] Report: Place: Publisher, Year. DOI. -->
+      <else-if type="report">
+        <group delimiter=": ">
+          <text variable="publisher-place"/>
+          <group delimiter=", ">
+            <text variable="publisher"/>
+            <date variable="issued">
+              <date-part name="year"/>
+            </date>
+          </group>
+        </group>
+        <text variable="DOI" prefix=". doi:"/>
+      </else-if>
+
+      <!-- [P] Patent: : Patent No.[P]. Year-Month-Day. -->
+      <else-if type="patent">
+        <text variable="number" prefix=": " suffix="[P]. "/>
+        <date variable="issued">
+          <date-part name="year"/>
+          <date-part name="month" form="numeric-leading-zeros" prefix="-"/>
+          <date-part name="day" form="numeric-leading-zeros" prefix="-"/>
+        </date>
+      </else-if>
+
+      <!-- [EB/OL] Webpage: (Year-Month-Day)[Accessed]. URL. -->
+      <else-if type="webpage">
+        <date variable="issued" prefix="(" suffix=")">
+          <date-part name="year"/>
+          <date-part name="month" form="numeric-leading-zeros" prefix="-"/>
+          <date-part name="day" form="numeric-leading-zeros" prefix="-"/>
+        </date>
+        <date variable="accessed" prefix="[" suffix="]">
+          <date-part name="year"/>
+          <date-part name="month" form="numeric-leading-zeros" prefix="-"/>
+          <date-part name="day" form="numeric-leading-zeros" prefix="-"/>
+        </date>
+        <text variable="URL" prefix=". "/>
+      </else-if>
+
+      <!-- [CP/CD] Software: Place: Publisher, Year. DOI. -->
+      <else-if type="software">
+        <group delimiter=": ">
+          <text variable="publisher-place"/>
+          <group delimiter=", ">
+            <text variable="publisher"/>
+            <date variable="issued">
+              <date-part name="year"/>
+            </date>
+          </group>
+        </group>
+        <text variable="DOI" prefix=". doi:"/>
+      </else-if>
+
+      <!-- [S] Standard: Standard No., Year. -->
+      <else-if type="bill legislation" match="any">
+        <text variable="number" suffix=", "/>
+        <date variable="issued">
+          <date-part name="year"/>
+        </date>
+      </else-if>
+
+      <!-- Default fallback -->
+      <else>
+        <text variable="container-title" suffix=", "/>
+        <date variable="issued">
+          <date-part name="year"/>
+        </date>
+        <text variable="volume" prefix=", "/>
+        <text variable="issue" prefix="(" suffix=")"/>
+        <text variable="page" prefix=": "/>
+        <text variable="DOI" prefix=". doi:"/>
+      </else>
+    </choose>
+  </macro>
+
+  <!-- ================= DOI / URL ================= -->
+  <macro name="access">
+    <choose>
+      <if variable="DOI">
+        <text variable="DOI" prefix="https://doi.org/"/>
+      </if>
+      <else-if variable="URL">
+        <text variable="URL"/>
+      </else-if>
+    </choose>
+  </macro>
+
+  <!-- ================= CITATION (IEEE SUPERSCRIPT) ================= -->
+  <citation collapse="citation-number">
+    <sort>
+      <key variable="citation-number" sort="ascending"/>
+    </sort>
+    <layout vertical-align="sup" prefix="[" suffix="]" delimiter=",">
+      <text variable="citation-number"/>
+    </layout>
+  </citation>
+
+  <!-- ================= BIBLIOGRAPHY (GB/T 7714-2015) ================= -->
+  <bibliography et-al-min="4" et-al-use-first="3" second-field-align="flush" entry-spacing="0">
+    <layout suffix=".">
+      <text variable="citation-number" prefix="[" suffix="]"/>
+      <text macro="author" suffix=". "/>
+      <text macro="titleField"/>
+      <text macro="source"/>
+    </layout>
+  </bibliography>
+
+</style>
