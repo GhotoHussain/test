@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<style class="in-text" version="1.0" et-al-min="3" et-al-use-first="3" initialize-with="" names-delimiter="" demote-non-dropping-particle="sort-only" default-locale="EN" xmlns="http://purl.org/net/xbiblio/csl">
+<style class="in-text" version="1.0" initialize-with="" names-delimiter="" demote-non-dropping-particle="sort-only" default-locale="EN" xmlns="http://purl.org/net/xbiblio/csl">
   <!-- This style was edited with the Visual CSL Editor (https://editor.citationstyles.org/visualEditor/) -->
   <info>
     <title>Yangzhou University - Software Engineering (College of Information &amp; AI)</title>
@@ -18,7 +18,7 @@
     <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
   </info>
 
-  <!-- Author macro: first 3 authors then et al. with dot -->
+  <!-- Author macro: first 3 authors then et al. -->
   <macro name="author">
     <names variable="author" et-al-min="3" et-al-use-first="3" suffix=", et al.">
       <name initialize-with=" " name-as-sort-order="all" sort-separator=" " delimiter=", " delimiter-precedes-last="always"/>
@@ -85,7 +85,6 @@
         <text macro="title"/>
         <text variable="number" prefix=": China, " suffix="[P].  "/>
       </else-if>
-      <!-- For software, technical reports, and similar -->
       <else-if type="software" match="any">
         <text macro="title" suffix="[CP/CD]. "/>
       </else-if>
@@ -107,7 +106,6 @@
     </names>
   </macro>
 
-  <!-- Publisher macro with journal name abbreviation support -->
   <macro name="publisher">
     <choose>
       <if type="paper-conference">
@@ -126,7 +124,6 @@
       <else-if type="bill legislation" match="any">
         <text variable="container-title" prefix=". "/>
       </else-if>
-      <!-- For articles and journals: use abbreviated title if available -->
       <else-if type="article" match="any">
         <choose>
           <if variable="container-title-short">
@@ -196,7 +193,6 @@
     </choose>
   </macro>
 
-  <!-- Citation: superscript with square brackets [ ] -->
   <citation collapse="citation-number">
     <sort>
       <key variable="citation-number" sort="descending"/>
@@ -206,8 +202,7 @@
     </layout>
   </citation>
 
-  <!-- Bibliography: first 3 authors + et al., journal abbreviation via short title -->
-  <bibliography et-al-min="3" et-al-use-first="3" second-field-align="flush" entry-spacing="0">
+  <bibliography second-field-align="flush" entry-spacing="0">
     <layout suffix=".">
       <text variable="citation-number" prefix="[" suffix="]"/>
       <text macro="author" suffix=". "/>
